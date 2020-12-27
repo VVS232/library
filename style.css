@@ -3,7 +3,7 @@ html{
 }
 #content{
     display: flex;
-    width:70%;
+    width:max-content;
     margin:0 auto;
     margin-top: 300px;
 
@@ -12,10 +12,39 @@ html{
     margin-right: 40px;
 }
 
+.material-icons{
+    font-family: 'Material Icons';
+    cursor: pointer;
+}
+
+#newBook{
+    display: flex;
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:60px;
+    height:60px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    border-radius: 50%;
+    color:white;
+    background-color: #2196F3;
+    font-size: 60px;
+border: none;
+align-items: center;
+ justify-content: center;
+}
 
 
 
-
+.newbook{
+    display: flex;
+    background-color: aquamarine;
+    position: fixed;
+    margin:auto;
+    width:40%;
+    flex-flow: column;
+}
 
 /*slider*/
 .switch {

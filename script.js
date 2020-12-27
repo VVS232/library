@@ -15,7 +15,19 @@ const HP=new Book("Harry Potter", "Rowling", 458, false);
 
 for (let i = 0; i<myLib.length;i++){
     let book = document.createElement("div");
-    book.className="books";
+    book.className="books";    
+    book.dataset.index=i;
+
+    
+    let bookDelete=document.createElement("span");
+    bookDelete.className="material-icons";
+    bookDelete.textContent="delete_forever";
+    bookDelete.addEventListener("click", ()=>{
+        document.getElementById("content").removeChild(book);
+         myLib.splice(i);
+    });
+    book.appendChild(bookDelete);
+
     let bookTitle=book.appendChild(document.createElement("h2"));
     bookTitle.textContent=`Title: ${myLib[i].title}`
     let bookAuthor= book.appendChild(document.createElement("h3"));
@@ -24,13 +36,12 @@ for (let i = 0; i<myLib.length;i++){
     bookPages.textContent=`Number of pages: ${myLib[i].pages}`;
     makeSwitch(book, myLib[i]);
 
-
     document.getElementById("content").appendChild(book);
 }
 
 
 
-function makeSwitch(book, arrObj){
+function makeSwitch(book, arrObj){  //making checkbox input for every book
     let  statusLabel= book.appendChild(document.createElement("label"));
     statusLabel.className="switch";
     let  statusInput= document.createElement("input");
@@ -41,6 +52,19 @@ function makeSwitch(book, arrObj){
     if (arrObj.read==true){
         statusInput.checked=true;
         }
-        else{
+    statusInput.addEventListener("change", ()=>{ //for switching read status on change of input
+        if (statusInput.checked==true){
+            arrObj.read=true;
         }
+        else{
+            arrObj.read=false;
+        }
+    })
+
+}
+
+function addBook(){
+    let newWind=document.createElement("div");
+    newWind.className="bookInput";
+        
 }

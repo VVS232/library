@@ -3,6 +3,8 @@
     <head>
         <title>Library
         </title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
         <meta charset="utf=8">
         <meta name="viewport" content ="width=device.width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
@@ -11,7 +13,21 @@
     </head>
     <body>
 <div id="content">
-    
+    <button type="button" id="newBook">+</button>
+    <form class="newbook">
+        <label> Title:
+        <input class="bookinfo"type="text" name="Title" id="title" required> 
+    </label>
+    <label> Author:
+        <input class="bookinfo"type="text" name="author" id="author" required>
+    </label>
+    <label> Number of pages:
+        <input type="number" class="bookinfo" name="pages" id="pages" required>
+    </label>
+        <input type="checkbox" name="read" id="read" class="bookinfo">
+        <button type="submit" id="addBook">Add book</button>
+
+    </form>
 </div>
 
 
