@@ -20,9 +20,27 @@ for (let i = 0; i<myLib.length;i++){
     bookTitle.textContent=`Title: ${myLib[i].title}`
     let bookAuthor= book.appendChild(document.createElement("h3"));
     bookAuthor.textContent=`by ${myLib[i].author}`;
-    
+    let bookPages=book.appendChild(document.createElement("p"));
+    bookPages.textContent=`Number of pages: ${myLib[i].pages}`;
+    makeSwitch(book, myLib[i]);
 
 
     document.getElementById("content").appendChild(book);
 }
 
+
+
+function makeSwitch(book, arrObj){
+    let  statusLabel= book.appendChild(document.createElement("label"));
+    statusLabel.className="switch";
+    let  statusInput= document.createElement("input");
+    statusLabel.appendChild(statusInput)
+    statusInput.type="checkbox";
+    let  statusSpan= statusLabel.appendChild(document.createElement("span"));
+    statusSpan.className="slider";
+    if (arrObj.read==true){
+        statusInput.checked=true;
+        }
+        else{
+        }
+}
