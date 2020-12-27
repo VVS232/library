@@ -5,19 +5,16 @@ function Book(title, author, pages, read){
     this.author=author;
     this.pages=pages;
     this.read=read;
-     this.info=function(){
-        return `${title} by ${author}, it has ${pages} pages.`;
-    }
     myLib.push(this);
 }
-const Lor=new Book("Lord of the Rings", "Tolkien",  294, true);
-const HP=new Book("Harry Potter", "Rowling", 458, false);
+/*const Lor=new Book("Lord of the Rings", "Tolkien",  294, true);
+const HP=new Book("Harry Potter", "Rowling", 458, false);*/
 
 
 
 
 function displayBooks(){
-
+checkStorage();
     document.querySelectorAll(".books").forEach((e)=>{
         e.remove()
     });
@@ -46,6 +43,7 @@ function displayBooks(){
 
     document.getElementById("content").appendChild(book);
 }
+
 }
 
 
@@ -88,6 +86,37 @@ document.getElementById("addBook").addEventListener("click",()=>{
 
 
 }
+
+
+
+
+function checkStorage(){
+    if (localStorage.length==0){
+        addToStorage()
+    }
+    else{
+        fromStorage()
+    }
+}
+
+
+
+function addToStorage(){
+    localStorage.clear();
+    for (let i = 0; i<myLib.length;i++){
+        localStorage.setItem(i, JSON.stringify(myLib[i]))
+}
+console.log(localStorage, "asdasd")
+
+}
+
+function fromStorage(){
+    for (let i =0; i<localStorage.length;i++){
+        let book=localStorage.getItem(i);
+        myLib.push(JSON.parse(book));
+    }
+}
+
 
 
 
