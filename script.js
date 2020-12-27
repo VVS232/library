@@ -1,5 +1,5 @@
 let myLib=[];
-
+document.getElementById("newBook").addEventListener("click", addBook)
 function Book(title, author, pages, read){
     this.title=title;
     this.author=author;
@@ -13,7 +13,15 @@ function Book(title, author, pages, read){
 const Lor=new Book("Lord of the Rings", "Tolkien",  294, true);
 const HP=new Book("Harry Potter", "Rowling", 458, false);
 
-for (let i = 0; i<myLib.length;i++){
+
+
+
+function displayBooks(){
+
+    document.querySelectorAll(".books").forEach((e)=>{
+        e.remove()
+    });
+    for (let i = 0; i<myLib.length;i++){
     let book = document.createElement("div");
     book.className="books";    
     book.dataset.index=i;
@@ -37,6 +45,7 @@ for (let i = 0; i<myLib.length;i++){
     makeSwitch(book, myLib[i]);
 
     document.getElementById("content").appendChild(book);
+}
 }
 
 
@@ -64,7 +73,22 @@ function makeSwitch(book, arrObj){  //making checkbox input for every book
 }
 
 function addBook(){
-    let newWind=document.createElement("div");
-    newWind.className="bookInput";
-        
+document.getElementById("newbookForm").style.visibility="initial";
+let title=document.getElementById("title").value;
+let author=document.getElementById("author").value;
+let pages=document.getElementById("pages").value;
+let read=document.getElementById("read").checked;
+
+document.getElementById("addBook").addEventListener("click",()=>{
+    let newBook= new Book(title,author,pages,read);
+    displayBooks();
+    document.getElementById("newbookForm").style.visibility="hidden";
+    title.value="";
+})
+
+
 }
+
+
+
+displayBooks();

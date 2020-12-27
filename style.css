@@ -37,13 +37,15 @@ align-items: center;
 
 
 
-.newbook{
+#newbookForm{
+    visibility: hidden;
     display: flex;
     background-color: aquamarine;
-    position: fixed;
-    margin:auto;
-    width:40%;
+    position: absolute;
+    width:30%;
     flex-flow: column;
+    z-index: 2;
+    opacity: 0.96;
 }
 
 /*slider*/
