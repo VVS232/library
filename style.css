@@ -1,0 +1,13 @@
+html{
+    background-color: antiquewhite;
+}
+#content{
+    display: flex;
+    width:70%;
+    margin:0 auto;
+    margin-top: 300px;
+
+}
+.books{
+    margin-right: 40px;
+}
