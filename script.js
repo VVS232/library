@@ -76,8 +76,8 @@ function makeSwitch(book, arrObj){  //making checkbox input for every book
 }
 
 function callForm(){
-document.getElementById("newbookForm").style.visibility="initial";
-
+ 
+        $("#newbookForm").css({visibility:"visible"})
 
 document.getElementById("addBook").addEventListener("click",createBook);
 
