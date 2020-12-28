@@ -1,8 +1,7 @@
 let myLib=[];
-document.getElementById("newBook").addEventListener("click", callForm)
-document.getElementById("closeForm").addEventListener("click", ()=>{
-    document.getElementById("newbookForm").style.visibility="hidden";
-
+$("#newBook").click(callForm);
+$("#closeForm").click(()=>{
+    $("#newbookForm").css({visibility:"hidden"})
 })
 function Book(title, author, pages, read){
     this.title=title;
@@ -18,8 +17,8 @@ function Book(title, author, pages, read){
 
 function displayBooks(){
 checkStorage();
-    document.querySelectorAll(".books").forEach((e)=>{
-        e.remove()
+$(".books").each(function (){
+        this.remove()
     });
     for (let i = 0; i<myLib.length;i++){
     let book = document.createElement("div");
@@ -27,25 +26,26 @@ checkStorage();
     book.dataset.index=i;
 
     
-    let bookDelete=document.createElement("span");
-    bookDelete.className="material-icons";
-    bookDelete.textContent="delete_forever";
-    bookDelete.addEventListener("click", ()=>{
-        document.getElementById("content").removeChild(book);
-         myLib.splice(i);
-         addToStorage();
-    });
-    book.appendChild(bookDelete);
-
-    let bookTitle=book.appendChild(document.createElement("h2"));
-    bookTitle.textContent=`Title: ${myLib[i].title}`
-    let bookAuthor= book.appendChild(document.createElement("h3"));
-    bookAuthor.textContent=`by ${myLib[i].author}`;
-    let bookPages=book.appendChild(document.createElement("p"));
-    bookPages.textContent=`Number of pages: ${myLib[i].pages}`;
+    let bookDelete=$("<span></span>");
+    $(bookDelete).click(()=>{
+        $(book).remove()
+        myLib.splice(i);
+        addToStorage();
+    })
+    $(bookDelete).addClass("material-icons")
+   // bookDelete.className="";
+   $(bookDelete).text("delete_forever")
+    //bookDelete.textContent=;
+    //bookDelete.addEventListener("click", ()=>{
+       
+   // });
+   $(book).append(bookDelete)
+    //book.appendChild(bookDelete);
+    $(book).append($("<h2></h2>").text(`Title: ${myLib[i].title}`));
+    $(book).append($("<h3></h3>").text(`by ${myLib[i].author}`));
+    $(book).append($("<p></p>").text(`Number of pages: ${myLib[i].pages}`))
     makeSwitch(book, myLib[i]);
-
-    document.getElementById("content").appendChild(book);
+$("#content").append(book)
 }
 
 }
