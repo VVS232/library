@@ -7,8 +7,7 @@ function Book(title, author, pages, read){
     this.read=read;
     myLib.push(this);
 }
-/*const Lor=new Book("Lord of the Rings", "Tolkien",  294, true);
-const HP=new Book("Harry Potter", "Rowling", 458, false);*/
+
 
 
 
@@ -30,6 +29,7 @@ checkStorage();
     bookDelete.addEventListener("click", ()=>{
         document.getElementById("content").removeChild(book);
          myLib.splice(i);
+         addToStorage();
     });
     book.appendChild(bookDelete);
 
@@ -66,6 +66,7 @@ function makeSwitch(book, arrObj){  //making checkbox input for every book
         else{
             arrObj.read=false;
         }
+        addToStorage();
     })
 
 }
@@ -79,11 +80,12 @@ let read=document.getElementById("read").checked;
 
 document.getElementById("addBook").addEventListener("click",()=>{
     let newBook= new Book(title,author,pages,read);
-    displayBooks();
     document.getElementById("newbookForm").style.visibility="hidden";
     title.value="";
-})
+    addToStorage();
+    displayBooks();
 
+})
 
 }
 
@@ -111,6 +113,7 @@ console.log(localStorage, "asdasd")
 }
 
 function fromStorage(){
+    myLib=[];
     for (let i =0; i<localStorage.length;i++){
         let book=localStorage.getItem(i);
         myLib.push(JSON.parse(book));
