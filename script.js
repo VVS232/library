@@ -1,5 +1,9 @@
 let myLib=[];
-document.getElementById("newBook").addEventListener("click", addBook)
+document.getElementById("newBook").addEventListener("click", callForm)
+document.getElementById("closeForm").addEventListener("click", ()=>{
+    document.getElementById("newbookForm").style.visibility="hidden";
+
+})
 function Book(title, author, pages, read){
     this.title=title;
     this.author=author;
@@ -71,25 +75,25 @@ function makeSwitch(book, arrObj){  //making checkbox input for every book
 
 }
 
-function addBook(){
+function callForm(){
 document.getElementById("newbookForm").style.visibility="initial";
-let title=document.getElementById("title").value;
+
+
+document.getElementById("addBook").addEventListener("click",createBook);
+
+
+}
+function createBook(){
+    let title=document.getElementById("title").value;
 let author=document.getElementById("author").value;
 let pages=document.getElementById("pages").value;
 let read=document.getElementById("read").checked;
-
-document.getElementById("addBook").addEventListener("click",()=>{
-    let newBook= new Book(title,author,pages,read);
+    new Book(title,author,pages,read);
     document.getElementById("newbookForm").style.visibility="hidden";
-    title.value="";
     addToStorage();
     displayBooks();
-
-})
-
+    document.getElementById("addBook").removeEventListener("click",createBook)
 }
-
-
 
 
 function checkStorage(){
@@ -107,8 +111,7 @@ function addToStorage(){
     localStorage.clear();
     for (let i = 0; i<myLib.length;i++){
         localStorage.setItem(i, JSON.stringify(myLib[i]))
-}
-console.log(localStorage, "asdasd")
+    }
 
 }
 

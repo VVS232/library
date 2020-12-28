@@ -48,6 +48,8 @@ align-items: center;
   width:15%;
   align-self: center;
   margin-top: 10px;
+  border-radius: 3px;
+  height:40px;
 }
 #newbookForm{
   border-radius: 10px;
@@ -92,6 +94,17 @@ h1{
   font-size: 30px;
   max-width: 200px;
 }
+
+#closeForm{
+  align-self: flex-end;
+  margin-bottom:-40px;
+  margin-right: 10px;
+  font-size: 20px;
+  text-decoration: underline;
+  cursor: pointer;
+  z-index: 4;
+}
+
 
 
 
