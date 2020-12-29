@@ -40,7 +40,6 @@ $("#content").append(book)
 }
 
 }
-const Hp=new Book("asd","asd",22,true)
 
 
 
