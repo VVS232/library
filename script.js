@@ -21,26 +21,17 @@ $(".books").each(function (){
         this.remove()
     });
     for (let i = 0; i<myLib.length;i++){
-    let book = document.createElement("div");
-    book.className="books";    
-    book.dataset.index=i;
-
-    
-    let bookDelete=$("<span></span>");
-    $(bookDelete).click(()=>{
-        $(book).remove()
-        myLib.splice(i);
-        addToStorage();
-    })
-    $(bookDelete).addClass("material-icons")
-   // bookDelete.className="";
-   $(bookDelete).text("delete_forever")
-    //bookDelete.textContent=;
-    //bookDelete.addEventListener("click", ()=>{
-       
-   // });
-   $(book).append(bookDelete)
-    //book.appendChild(bookDelete);
+    let book = $("<div></div>");
+    $(book).addClass("books");
+    $(book).attr("data-index",i)
+    $(book).append($("<span></span>")
+        .addClass("material-icons")
+        .text("delete_forever")
+        .click(()=>{
+            $(book).remove()
+            myLib.splice(i);
+           addToStorage();
+        }));
     $(book).append($("<h2></h2>").text(`Title: ${myLib[i].title}`));
     $(book).append($("<h3></h3>").text(`by ${myLib[i].author}`));
     $(book).append($("<p></p>").text(`Number of pages: ${myLib[i].pages}`))
@@ -49,50 +40,47 @@ $("#content").append(book)
 }
 
 }
+const Hp=new Book("asd","asd",22,true)
 
 
 
 function makeSwitch(book, arrObj){  //making checkbox input for every book
-    let  statusLabel= book.appendChild(document.createElement("label"));
-    statusLabel.className="switch";
-    let  statusInput= document.createElement("input");
-    statusLabel.appendChild(statusInput)
-    statusInput.type="checkbox";
-    let  statusSpan= statusLabel.appendChild(document.createElement("span"));
-    statusSpan.className="slider";
+    let statusLabel=$("<label></label>").addClass("switch");
+    $(book).append(statusLabel)
+   let statusInput=$("<input>").attr("type","checkbox");
+   $(statusLabel).append(statusInput);
+   $(statusLabel).append($("<span></span>").addClass("slider"));
     if (arrObj.read==true){
-        statusInput.checked=true;
+        $(statusInput).prop("checked","true");
         }
-    statusInput.addEventListener("change", ()=>{ //for switching read status on change of input
-        if (statusInput.checked==true){
-            arrObj.read=true;
-        }
-        else{
-            arrObj.read=false;
-        }
-        addToStorage();
-    })
-
+        $(statusInput).on("change",()=>{   
+            console.log("asdas")         //for switching read status on change of input
+            if ($(statusInput).is(":checked")){
+                arrObj.read=true;
+            }
+            else{
+                arrObj.read=false;
+            }
+            addToStorage();
+        })
 }
 
 function callForm(){
- 
         $("#newbookForm").css({visibility:"visible"})
-
-document.getElementById("addBook").addEventListener("click",createBook);
-
-
+        $("#addBook").click(createBook);
 }
+
+
 function createBook(){
-    let title=document.getElementById("title").value;
-let author=document.getElementById("author").value;
-let pages=document.getElementById("pages").value;
-let read=document.getElementById("read").checked;
+    let title=$("#title").val();
+   let author=$("#author").val();
+let pages=$("#pages").val();
+let read=$("#read").is(":checked");
     new Book(title,author,pages,read);
-    document.getElementById("newbookForm").style.visibility="hidden";
-    addToStorage();
+    $("#newbookForm").css("visibility","hidden");
+   addToStorage();
     displayBooks();
-    document.getElementById("addBook").removeEventListener("click",createBook)
+    $("#addBook").off("click", createBook);
 }
 
 
