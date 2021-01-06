@@ -45,7 +45,7 @@ align-items: center;
 
 
 #addBook{
-  width:15%;
+  width:90px;
   align-self: center;
   margin-top: 10px;
   border-radius: 3px;
@@ -60,6 +60,7 @@ align-items: center;
     background-color: aquamarine;
     position: absolute;
     width:30%;
+    min-width: 300px;
     flex-flow: column;
     z-index: 2;
     opacity: 0.96;
@@ -124,7 +125,16 @@ max-width: 400px;  }
   height:40px;
   font-size: 40px;
 }
+#newbookForm{
+  left:10%;
 }
+
+}
+
+
+
+
+
 
 
 
