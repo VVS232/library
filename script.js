@@ -97,6 +97,9 @@ class locStorage { //local storage
     }
 
     function createBook() {
+        if (document.getElementById("addBook").checkValidity())
+        {console.log(32)
+            return;}
         let title = $("#title").val();
         let author = $("#author").val();
         let pages = $("#pages").val();

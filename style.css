@@ -53,21 +53,23 @@ align-items: center;
 }
 #newbookForm{
   border-radius: 10px;
-  height:360px;
+  height:460px;
     visibility: hidden;
     line-height: 40px;
     display: flex;
     background-color: aquamarine;
     position: absolute;
     width:30%;
+    max-width:400px;
     min-width: 300px;
     flex-flow: column;
     z-index: 2;
     opacity: 0.96;
     margin:0 auto;
-    top: 30%;
-    left:30%;
+    top: 50%;
+    left:50%;
     font-size: 25px;
+    transform: translate(-50%, -50%);
 }
 
 #read{
@@ -125,9 +127,7 @@ max-width: 400px;  }
   height:40px;
   font-size: 40px;
 }
-#newbookForm{
-  left:10%;
-}
+
 
 }
 
